@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import LoginForm from "./LoginForm";
 import SwitchDark from "./SwitchDark";
-import LoginLeftDark from "@/assets/images/logo_dark.svg";
+import LoginLeftDark from "@/assets/images/login_left_dark.svg";
 import LoginLeftSunny from "@/assets/images/login_left_sunny.svg";
 import LogoDark from "@/assets/images/logo_dark.svg";
 import LogoSunny from "@/assets/images/logo_sunny.svg";
@@ -12,6 +12,15 @@ import styles from "./index.module.scss";
 
 const Login: React.FC = () => {
     const isDark = useSelector((state: RootState) => state.global.isDark);
+
+    useEffect(() => {
+        document.title = "登录 - HTTP接口管理平台";
+    }, []);
+
+    useEffect(() => {
+        document.body.className = isDark ? "dark" : "";
+        console.log("isDark", isDark);
+    }, [isDark]);
 
     return (
         <div className={styles["login-container"]}>
