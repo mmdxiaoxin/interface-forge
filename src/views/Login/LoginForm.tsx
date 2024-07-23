@@ -1,11 +1,11 @@
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Form, Input, notification } from "antd";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Input, Button, notification } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import md5 from "md5";
-import { RootState } from "../../store";
-import { setToken, setLoading } from "../../store/slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import { RootState } from "../../store";
+import { setLoading, setToken } from "../../store/slices/userSlice";
+import styles from "./index.module.scss"; // 导入样式模块
 
 const LoginForm: React.FC = () => {
     const [form] = Form.useForm();
@@ -62,24 +62,24 @@ const LoginForm: React.FC = () => {
                     placeholder="密码：123456"
                 />
             </Form.Item>
-            <div className="login-tip">
-                <div className="register-link">
-                    <span className="link-text">还没有账号？</span>
-                    <a href="/register" className="register-button">
+            <div className={styles["login-tip"]}>
+                <div className={styles["register-link"]}>
+                    <span className={styles["link-text"]}>还没有账号？</span>
+                    <a href="/register" className={styles["register-button"]}>
                         立即注册
                     </a>
                 </div>
-                <div className="forgot-password-link">
-                    <span className="link-text">忘记密码？</span>
+                <div className={styles["forgot-password-link"]}>
+                    <span className={styles["link-text"]}>忘记密码？</span>
                     <a
                         href="/forgot-password"
-                        className="forgot-password-button"
+                        className={styles["forgot-password-button"]}
                     >
                         找回密码
                     </a>
                 </div>
             </div>
-            <div className="login-btn">
+            <div className={styles["login-btn"]}>
                 <Button
                     icon={<UserOutlined />}
                     shape="round"
