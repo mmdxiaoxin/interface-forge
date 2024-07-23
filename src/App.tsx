@@ -3,7 +3,7 @@ import Router from "./routes";
 
 function App(): React.ReactElement {
     return (
-        <div className="App" style={{ height: "100vh", width: "100%" }}>
+        <div className="App" style={{ width: "100%", height: "100vh" }}>
             <Router />
         </div>
     );

@@ -1,3 +1,4 @@
+import { RootState } from "@/store";
 import {
     DesktopOutlined,
     PieChartOutlined,
@@ -5,6 +6,7 @@ import {
 } from "@ant-design/icons";
 import { Menu, type MenuProps } from "antd";
 import * as React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -30,7 +32,10 @@ const items: MenuItem[] = [
 ];
 
 const NavMenu: React.FC = () => {
-    return <Menu theme="dark" mode="inline" items={items} />;
+    const isDark = useSelector((state: RootState) => state.global.isDark);
+    return (
+        <Menu theme={isDark ? "dark" : "light"} mode="inline" items={items} />
+    );
 };
 
 export default NavMenu;
